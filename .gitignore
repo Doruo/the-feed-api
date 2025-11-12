@@ -3,11 +3,13 @@
 /app/logs/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
+bundles
 
 # Email spool folder
 /app/spool/*
 
 # Cache, session files and logs (Symfony3)
+var
 /var/cache/*
 /var/logs/*
 /var/sessions/*
@@ -42,8 +44,9 @@
 # Build data
 /build/
 
-# Composer PHAR
+# Composer
 /composer.phar
+composer.lock
 
 # Backup entities generated with doctrine:generate:entities command
 **/Entity/*~
