@@ -54,6 +54,21 @@ class Utilisateur implements UserInterface
     #[Groups(['serialization:etudiant:read'])]
     private ?string $adresseEmail = null;
 
+    /**
+     * @var ?string The plain password
+     */
+    #[ORM\Column]    
+    #[Assert\NotNull]
+    #[Assert\NotBlank]
+    #[Assert\NotNull]
+    private ?string $plainPassword = null;
+
+    /**
+     *  @var ?string The hashed password
+     *   #[ORM\Column]
+     *   private ?string $password = null;
+    */
+
     #[ApiProperty(
         description: 'Si il possède la formule premium', 
         readable: true, writable: false
@@ -69,15 +84,6 @@ class Utilisateur implements UserInterface
      */
     #[ORM\Column]
     private array $roles = [];
-    
-    /**
-     * @var ?string The hashed password
-     */
-
-    /*
-    #[ORM\Column]
-    private ?string $password = null;
-    */
 
     /* ---------------------------------------------------- */
 
@@ -138,10 +144,11 @@ class Utilisateur implements UserInterface
         return $this;
     }
 
+    // @deprecated, to be removed when upgrading to Symfony 8
     #[\Deprecated]
     public function eraseCredentials(): void
     {
-        // @deprecated, to be removed when upgrading to Symfony 8
+        $this->plainPassword = null;
     }
 
     public function isPremium(): ?bool
