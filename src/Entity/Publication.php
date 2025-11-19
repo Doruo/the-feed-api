@@ -3,18 +3,21 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Post;
 use App\Repository\PublicationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiProperty;
 
 #[ApiResource(
-    order : ["chiffreAffaire" => "DESC"],
     operations: [
         new Get(),
         new Post(),
         new Delete(),
-    ]
+    ],
+    order: ["chiffreAffaire" => "DESC"]
 )]
 #[ORM\Entity(repositoryClass: PublicationRepository::class)]
 #[ORM\HasLifecycleCallbacks]
