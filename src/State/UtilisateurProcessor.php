@@ -7,8 +7,8 @@ use ApiPlatform\State\ProcessorInterface;
 
 class UtilisateurProcessor implements ProcessorInterface
 {
-    public function process(mixed $data, Operation $operation, array $uriVariables = [], array $context = [])
+    public function process(mixed $data, Operation $operation, array $uriVariables = [], array $context = []): void
     {
-
+        // Handle the state
     }
 }
